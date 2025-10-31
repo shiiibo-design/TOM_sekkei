@@ -1,0 +1,991 @@
+@charset "utf-8";
+
+/*===========　レスポンシブ用基礎CSS　===========*/
+
+/*ボックスモデルをborder-boxに変更*/
+* {
+	box-sizing: border-box;
+}
+/*フルードイメージ*/
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+}
+
+/*回転時の文字調整封印*/
+html{
+  -webkit-text-size-adjust: 100%;
+}
+
+
+/*===========　スマホ用　通常時　===========*/
+body {
+	font-family: "游明朝体", "Yu Mincho", YuMincho, "ヒラギノ明朝 Pro", "Hiragino Mincho Pro", "MS P明朝", "MS PMincho", serif;
+	color:#333
+}
+
+.gothic{
+	font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "MS Pゴシック", "MS PGothic", sans-serif;
+	color: #333;
+}
+
+
+
+
+/*========= ローディング画面のためのCSS ===============*/
+#splash {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: #333;
+	z-index: 9999999;
+	text-align:center;
+	color:#fff;
+}
+
+#splash-logo {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+/*========= 画面遷移のためのCSS ===============*/
+
+body{
+    background:#333;
+}
+
+body.appear{
+    background:#fff;
+}
+
+/*画面遷移アニメーション*/
+.splashbg1,
+.splashbg2{
+    display: none;
+}
+
+/*bodyにappearクラスがついたら出現*/
+body.appear .splashbg1,
+body.appear .splashbg2{
+	display:block;
+}
+
+/*上に消えるエリア*/
+body.appear .splashbg1{
+	animation-name:PageAnime;
+	animation-duration:1.4s;
+	animation-timing-function:ease-in-out;
+	animation-fill-mode:forwards;
+    content: "";
+    position:fixed;
+	z-index: 999;
+    width: 100%;
+    height: 100vh;
+    bottom:50%;
+	left:0;
+    transform: scaleY(1);
+    background-color: #333;
+}
+
+@keyframes PageAnime{
+	0% {
+		transform-origin:top;
+		transform:scaleY(1);
+	}
+
+	100% {
+		transform-origin:top;
+		transform:scaleY(0);
+	}
+}
+
+/*下に消えるエリア*/
+body.appear .splashbg2{
+    animation-name:PageAnime2;
+	animation-duration:1.4s;
+	animation-timing-function:ease-in-out;
+	animation-fill-mode:forwards;
+    content: "";
+    position:fixed;
+	z-index: 999;
+    width: 100%;
+    height: 100vh;
+    top: 50%;
+	left:0;
+    transform: scaleY(1);
+    background-color: #333;
+}
+
+@keyframes PageAnime2{
+	0% {
+		transform-origin:bottom;
+		transform:scaleY(1);
+	}
+	100% {
+		transform-origin:bottom;
+		transform:scaleY(0);
+	}
+}
+
+/*画面遷移の後現れるコンテンツ設定*/
+#container{
+	opacity: 0;
+}
+
+/*bodyにappearクラスがついたら出現*/
+body.appear #container{
+	animation-name:PageAnimeAppear;
+	animation-duration:1s;
+	animation-delay:0.2s;
+	animation-fill-mode:forwards;
+	opacity: 0;
+}
+
+@keyframes PageAnimeAppear{
+	0% {
+	opacity: 0;
+	}
+	100% {
+	opacity: 1;
+}
+}
+
+
+/* ------header----- */
+
+header{
+	background-color: #1a285f;
+	opacity: 0.9;
+	max-height: 150px;
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	padding: 20px;
+}
+
+header h1 img {
+	margin-left: 30px;
+}
+
+#white li a{
+	color: #fff;
+}
+
+#white li a:hover{
+	opacity: 0.5;
+}
+
+.header-container{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height:100%;
+}
+
+.w-container{
+	width: min(95%,1166px);
+	margin: auto;
+}
+
+.navbtn{
+	padding: 0;
+	outline: none;
+	border: none;
+	background: transparent;
+	cursor:pointer;
+	color: #fff;
+	font-size: 30px;
+}
+
+.open .navbtn{
+	z-index: 110;;
+	color: #fff;
+}
+
+.navbtn .fa-bars{
+	display: revert;
+}
+
+.open .navbtn .fa-bars{
+	display: none;
+}
+
+.navbtn .fa-xmark{
+	display: none;
+}
+
+.open .navbtn .fa-xmark{
+	display: revert;
+}
+
+
+
+/* ------メイン共通設定----- */
+
+section{
+	margin-top: 100px;
+}
+
+
+.innerwrap{
+	width: min(90%,1166px);
+	margin: 0 auto;
+
+
+}
+
+/* ヒーロー */
+#slider {
+	position: relative;
+	bottom:150px;
+    width: 100%;
+    height: 100vh;
+}
+
+
+/* ---図面の先にある安心のかたち----- */
+
+.scrolldown2{
+	position:absolute;
+	bottom:10px;
+	left:50%;
+}
+
+.scrolldown2 span{
+	position: absolute;
+	left:10px;
+	bottom:10px;
+	color: #FDF5AA;
+	font-size: 0.7rem;
+	letter-spacing: 0.05em;
+	-ms-writing-mode: tb-rl;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+}
+
+.scrolldown2:before {
+    content: "";
+    position: absolute;
+    bottom:0;
+    left:-4px;
+	width:10px;
+	height:10px;
+	border-radius: 50%;
+	background:#FDF5AA;
+	animation:
+		circlemove 1.6s ease-in-out infinite,
+		cirlemovehide 1.6s ease-out infinite;
+}
+
+@keyframes circlemove{
+      0%{bottom:45px;}
+     100%{bottom:-5px;}
+ }
+
+@keyframes cirlemovehide{
+      0%{opacity:0}
+     50%{opacity:1;}
+    80%{opacity:0.9;}
+	100%{opacity:0;}
+ }
+
+.scrolldown2:after{
+	content:"";
+	position: absolute;
+	bottom:0;
+	left:0;
+	width:2px;
+	height: 50px;
+	background:#FDF5AA;
+}
+
+/* ------コンテンツ----- */
+
+.contents-company{
+	margin-top: 30px;
+		position: relative;
+
+}
+
+.contents-text{
+	padding-bottom: 30px;
+	background-color:#dce6f4 ;
+	text-align: center;
+	height: 280px;
+	position: relative;
+	z-index: -100;
+}
+
+.contents img{
+	width:100%;
+}
+
+.contents h3{
+	padding-top:25px ;
+	font-size: clamp(25px,3vw,40px);
+}
+
+.contents h4{
+	padding: 5px 0 25px ;
+}
+
+.contents-detail{
+	font-size: clamp(12px,1.2vw,16px);
+	width: 17em;
+	line-height: 1.6em;
+	width: 80vw;
+	margin: 0 auto;
+}
+
+
+
+.contents-concept{
+	margin-top: 50px;
+}
+
+.concept-text{
+		padding-bottom: 30px;
+	background-color: #dce6f4 ;
+	text-align: center;
+	height: 280px;
+		position: relative;
+	z-index: -100;
+
+}
+
+
+.btntransform{
+	position: relative;
+    /*ボタンの形状*/	
+    display: inline-block;
+	padding:0 0 0 15px;
+	line-height: 50px;
+    color: #fff;
+    text-decoration: none;
+    outline: none;
+}
+
+.btntransform::before{
+		z-index: -1;
+	content:'';
+	position:absolute;
+	left:-30px;
+	width:50px;
+	height:50px;
+	background-color: #1a285f;
+	border-radius:25px;
+    transition:.3s ease-out;
+}
+
+/*hoverした際の形状*/
+
+.btntransform:hover::before{
+	display: block;
+	width: 180px;
+	box-sizing: border-box;
+	font-size: 16px;
+	text-align: center;
+}
+
+/* 矢印の形状 */
+.btntransform::after{
+	position: absolute;
+    content: '';
+    top: 1.3em;
+    right: -15px;
+    width: 5px;
+    height: 5px;
+    border-top: 1px solid #fff;
+    border-right: 1px solid #fff;
+    transform: rotate(45deg);
+}
+
+/* ------業務実績----- */
+
+.grid{
+	margin-top: 30px;
+}
+
+.grid a:hover{
+	opacity: 0.5;
+}
+
+.example{
+	height: 65px;
+	text-align: center;
+	line-height: 65px;
+	font-size: 14px;
+}
+
+
+
+/* アニメーションスタートの遅延時間を決めるCSS*/
+
+.delay-time02{
+animation-delay: 0.2s;
+}
+
+.delay-time04{
+animation-delay: 0.4s;
+}
+
+.delay-time06{
+animation-delay: 0.6s;
+}
+
+
+.box{
+	opacity: 0;
+}
+
+
+.fadeUp {
+animation-name:fadeUpAnime;
+animation-duration:0.5s;
+animation-fill-mode:forwards;
+opacity: 0;
+}
+@keyframes fadeUpAnime{
+  from {
+    opacity: 0;
+	transform: translateY(100px);
+  }
+
+  to {
+    opacity: 1;
+	transform: translateY(0);
+  }
+}
+/* ------代表挨拶----- */
+
+
+.reader-pic img{
+	margin: 30px auto ;
+}
+
+.reader-name{
+	width: 135px;
+	margin: 0 auto ;
+}
+
+.reader-name p:nth-child(2){
+	font-size:25px;
+	margin: 25px 0 15px;
+}
+
+
+.reader-name p:last-child{
+	font-size: 10px;
+}
+
+.reader-greeting{
+	margin: 30px auto;
+	font-size: 13px;
+	line-height: 1.6;
+	width: 80vw;
+	
+}
+.reader-greeting p{
+	margin-bottom: 35px;
+}
+
+.keireki {
+margin-top: 50px;
+}
+
+
+
+.btn05{
+    position: relative;
+    display: inline-block;
+    color: #000; 
+    padding: 10px 20px;
+    background:#dce6f4;;
+    text-decoration: none;
+    outline: none;
+		padding: 20px;
+		width: 100%;
+		text-align: center;
+    transition: all .3s;
+    transition-delay: .3s;
+}
+
+.btn05:hover{
+	background:#29409c;
+	color: #fff;
+}
+
+.btn05 span{
+    display: block;
+}
+
+.btn05::before,
+.btn05::after{
+    content:"";
+    position: absolute;
+    width: 0;
+    height: 1px;
+    background: #333;
+    transition: all 0.1s linear;
+}
+
+.btn05 span::before,
+.btn05 span::after{
+    content:"";
+    position: absolute;
+    width:1px;
+    height:0;
+    background: #333;
+    transition: all 0.1s linear;
+}
+
+.btn05:hover::before,
+.btn05:hover::after{
+    width: 100%;
+}
+.btn05:hover span::before,
+.btn05:hover span::after{
+    height: 100%;
+}
+
+
+.bordercircle3::after{
+    right:0;
+    bottom: 0;
+    transition-duration: 0.4s;
+}
+
+.bordercircle3 span::after{
+    right:0;
+    bottom: 0;
+    transition-duration: 0.4s;
+}
+
+.bordercircle3::before{
+    left: 0;
+    top: 0;
+    transition-duration: 0.4s;
+}
+
+.bordercircle3 span::before{
+    left: 0;
+    top: 0;
+    transition-duration: 0.4s;
+}
+/* ------新着情報----- */
+
+.news{
+	font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "MS Pゴシック", "MS PGothic", sans-serif;
+	color: #333;
+}
+
+.news h2{
+	font-family: "游明朝体", "Yu Mincho", YuMincho, "ヒラギノ明朝 Pro", "Hiragino Mincho Pro", "MS P明朝", "MS PMincho", serif;
+	color:#333;
+}
+
+
+/*tabの形状*/
+.tab-area{
+	margin-top: 50px;
+    width: 70%;
+}
+
+.tab{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.tab li{
+    text-align: center;
+    white-space: nowrap;
+}
+
+.tab li a{
+	display: block;
+    border-top:transparent 1px solid;
+    border-right:#aaa 1px solid;
+    border-left:transparent 1px solid;
+	padding:8px 30px;
+    background:#ddd;
+    color: #333;
+}
+
+.tab-choice-area li {
+ border-bottom: solid 1px #eee;
+}
+
+@media screen and (max-width:400px) {
+.tab li a {
+	padding:8px 20px;
+}
+   
+}
+
+.tab li.active a{
+    background: #303D6F;
+    border-top:#aaa 1px solid;
+	border-color:#aaa;
+    color: #fff;
+}
+
+.area {
+	display: none;
+	opacity: 0;
+    padding: 20px 40px;
+}
+
+.area.is-active {
+    display: block;
+    animation-name: displayAnime;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes displayAnime{
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+
+
+/* news */
+
+.news-img-wrapper{
+    position:relative;
+    z-index: 1;
+    overflow: hidden;
+    width:90%;
+    height: 60vh;
+}
+
+.news-img{
+    height: 60vh;
+    background:url("../img/02.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.news-img::after{
+     content:'';
+    position: absolute;
+    bottom:0;
+    left:0;
+    width:70%;
+    height: 10vh;
+    background:#000;
+    z-index:2;
+}
+
+#news{
+    padding: 0 0 5% 15%;
+}
+
+#news .area li{
+    padding: 20px 0;
+}
+
+#news .area time{
+    display: block;
+    color: #aaa;
+}
+
+#news .tab{
+    position: relative;
+    top:1px;
+}
+
+#news .tab-choice-area{
+    border-top:1px solid #aaa;
+    border-left:1px solid #aaa;
+}
+
+@media only screen and (max-width: 1110px) {
+    .tab-area{
+        width:100%;
+    }
+    
+}
+
+@media only screen and (max-width: 768px) {
+#news {
+    padding: 0 0 5% 30px;
+}
+}
+
+
+
+/* ------アクセス----- */
+
+address{
+	margin: 60px auto;
+	width: 80vw;
+	line-height: 1.6;
+}
+
+
+.map iframe{
+	width: 100%;
+	height: 250px;
+	margin-bottom: 3px;
+}
+
+
+/* ------フッター----- */
+
+
+footer{
+	background-color: #1a285f;
+	color: #fff;
+	height: 50px;
+	margin-bottom: 10px;
+	
+}
+
+footer p{
+	font-size: 10px;
+	text-align: center;
+	line-height: 50px;
+}
+
+
+/* ------アニメーション----- */
+/* 背景色が流れてくる */
+
+.fadein{
+	opacity: 0;
+	transform: translate(0,80px);
+	transition: all 800ms;
+}
+
+
+
+.fadein.left{
+	transform: translate(-80px,0);
+
+}
+
+.fadein.scrollin{
+	opacity: 1;
+	transform: translate(0,0);
+}
+
+.bg .bg-wrap {
+  position: relative;
+  display: inline-block;
+  margin-top: 5px;
+}
+.bg.is-animated .bg-wrap::before {
+  animation: bg 2.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  background: #1a285f;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: left center;
+}
+.bg .bg-wrap .inn {
+  color: #fff;
+  display: inline-block;
+  font-size: 36px;
+  font-weight: bold;
+  padding: 5px 15px;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes bg {
+  0% {
+    opacity: 0;
+    transform: scaleX(0) translateX(-5%);
+  }
+  30% {
+    transform: scaleX(1) translateX(0);
+  }
+  100% {
+    transform: scaleX(1) translateX(0);
+  }
+  30%, 100% {
+    opacity: 1;
+  }
+}
+/*リンクの形状*/
+#page-top a{
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	background:#1a285f;
+	border-radius: 5px;
+	width: 60px;
+	height: 60px;
+	color: #fff;
+	text-align: center;
+	text-transform: uppercase; 
+	text-decoration: none;
+	font-size:0.6rem;
+	transition:all 0.3s;
+}
+
+#page-top a:hover{
+	background: #777;
+}
+
+
+
+/*リンクを右下に固定*/
+#page-top {
+	position: fixed;
+	right: 10px;
+	bottom:10px;
+	z-index: 2;
+    /*はじめは非表示*/
+	opacity: 0;
+	transform: translateX(100px);
+}
+
+/*　左の動き　*/
+
+#page-top.LeftMove{
+	animation: LeftAnime 0.5s forwards;
+}
+
+@keyframes LeftAnime{
+  from {
+    opacity: 0;
+	transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+	transform: translateX(0);
+  }
+}
+
+/*　右の動き　*/
+
+#page-top.RightMove{
+	animation: RightAnime 0.5s forwards;
+}
+@keyframes RightAnime{
+  from {
+  	opacity: 1;
+	transform: translateX(0);
+  }
+  to {
+  	opacity: 1;
+	transform: translateX(100px);
+  }
+}
+
+@media screen and (max-width:768px) {
+ #page-top a:hover{
+	background:#1a285f;
+}   
+}
+/* =========768pxから============= */
+
+@media (min-width:768px){
+.navbtn {
+	display: none;
+}
+.nav ul{
+	display: flex;
+	gap:40px;
+	padding: 20px;
+}
+.nav ul li{
+writing-mode: vertical-rl;
+-ms-writing-mode: tb-rl;
+font-size: 16px;
+}
+
+
+
+.contents img{
+	margin: 0;
+	width: 100%;
+}
+
+
+.contents-wrap{
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+}
+
+
+
+.contents-detail{
+	width: 25em;
+}
+
+.contents-concept {
+	margin-top: 30px;
+}
+
+.contents-company , .contents-concept{
+	flex: 1;
+	min-width: 0;
+}
+
+
+.concept-text , .contents-text{
+	width: auto;
+	height: auto;
+}
+
+
+.grid{
+	display: grid;
+	grid-template-columns: repeat(2,1fr);
+}
+
+.grid img{
+	width: 90%;
+}
+}
+/* =========767pxまで============= */
+
+@media (max-width:767px){
+header h1 img {
+	width: 30%;
+}
+
+.nav{
+	position: fixed;
+	inset: 0 -100% 0 100%;
+	z-index: 100;
+	background-color: #4e483ae6;
+	transition: transform 0.3s;
+}
+
+.open .nav{
+	transform: translate(-100% , 0);
+}
+
+.open body{
+	position: fixed;
+	overflow: hidden;
+}
+
+.nav ul{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	gap:40px;
+	color: #fff;
+}
+
+}
+
+
+
