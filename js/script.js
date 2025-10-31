@@ -17,16 +17,16 @@ $('.splashbg1').on('animationend', function() {
 var windowwidth = window.innerWidth || document.documentElement.clientWidth || 0;
 		if (windowwidth > 768){
 			var responsiveImage = [//PC用の画像
-				{ src: '../images/keyimg2_pc-100.jpg'},
-				{ src: '../images/keyimg_pc-100.jpg'},
-				{ src: '../images/keyimg3_pc-100.jpg'},
+				{ src: 'images/keyimg2_pc-100.jpg'},
+				{ src: 'images/keyimg_pc-100.jpg'},
+				{ src: 'images/keyimg3_pc-100.jpg'},
 			];
 		} else {
 			var responsiveImage = [//タブレットサイズ（768px）以下用の画像
-				{ src: '../images/keyimg4_sp-100.jpg' },
-				{ src: '../images/keyimg3_sp-100.jpg' },
-				{ src: '../images/keyimg2_sp-100.jpg' },
-				{ src: '../images/keyimg_sp-100.jpg' },
+				{ src: 'images/keyimg4_sp-100.jpg' },
+				{ src: 'images/keyimg3_sp-100.jpg' },
+				{ src: 'images/keyimg2_sp-100.jpg' },
+				{ src: 'images/keyimg_sp-100.jpg' },
 
 			];
 		}
@@ -193,4 +193,5 @@ $('#page-top').click(function () {
         scrollTop: 0
     }, 500);
     return false;
+
 });
